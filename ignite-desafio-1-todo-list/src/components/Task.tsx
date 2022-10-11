@@ -14,13 +14,23 @@ interface TaskProps {
 
 export function Task({task, doneTask, deleteTask}: TaskProps) {
 
+  function handleTaskDone() {
+    doneTask(task.id);
+  }
+
+  function handleDeleteTask() {
+    deleteTask(task.id);
+  }
+
   return (
     <li className={styles.task}>
-      <button className={styles.checkbox}>
+      <button className={styles.checkbox} onClick={handleTaskDone}>
         <img src={task.isComplete? checkboxDone : checkbox} />
       </button>
       <p>{task.title}</p>
-      <button type="button" className={styles.addbutton}>
+      <button type="button" 
+              onClick={handleDeleteTask}
+              className={styles.addbutton}>
           {/* <FiTrash size={16}/> */}
           <img src={trash} />
       </button>
