@@ -24,6 +24,7 @@ export function Input({createNewTask}: InputProps) {
     createNewTask(newTask);
 
     //const newTask = [newTask, ...tasks];
+    setNewTaskTitle('');
   }
   function handleNewTaskChange(event: ChangeEvent<HTMLInputElement>) {
     event.target.setCustomValidity("");

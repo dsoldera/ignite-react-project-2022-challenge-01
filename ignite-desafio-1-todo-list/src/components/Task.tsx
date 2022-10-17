@@ -27,10 +27,10 @@ export function Task({task, doneTask, deleteTask}: TaskProps) {
       <button className={styles.checkbox} onClick={handleTaskDone}>
         <img src={task.isComplete? checkboxDone : checkbox} />
       </button>
-      <p>{task.title}</p>
+      <p className={task.isComplete? styles.taskdone : styles.tasktitle}>{task.title}</p>
       <button type="button" 
               onClick={handleDeleteTask}
-              className={styles.addbutton}>
+              className={styles.deletebutton}>
           {/* <FiTrash size={16}/> */}
           <img src={trash} />
       </button>

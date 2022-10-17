@@ -1,6 +1,7 @@
 import { Header } from './components/Header';
 import { Task } from './components/Task';
 import { Input } from './components/Input';
+import { NoTasks } from './components/NoTasks';
 import { useState } from 'react';
 
 import styles from './App.module.scss';
@@ -11,24 +12,6 @@ export interface TaskI {
   title: string;
   isComplete: boolean
 }
-
-// const tasks = [
-//   {
-//     id: '1212',
-//     title: 'Assistir ao Ignite Lab',
-//     isComplete: false
-//   },
-//   {
-//     id: '125454',
-//     title: 'Terminar Atividade Desafio 1',
-//     isComplete: false
-//   },
-//   {
-//     id: '444444',
-//     title: 'Fazer Encomendas Amigurumi',
-//     isComplete: true
-//   }
-// ]
 
 function App() {
   const [tasks, setTasks] = useState<TaskI[]>([]);
@@ -56,6 +39,11 @@ function App() {
     setTasks(newTasks);
   }
 
+
+  function countTotal() {
+    return tasks.reduce((acc, _task) => acc + 1, 0);
+  }
+
   return (
     <>
       <Header />
@@ -64,17 +52,23 @@ function App() {
             createNewTask={onCreateNewTask}
           />
         <div className={styles.info}>
-          <div>Tarefas Criadas <span>{taskNumber? taskNumber: 0}</span></div>
-          <div>Concluidas <span>{taskDone} de {taskNumber? taskNumber: 0}</span></div>
+          <div className={styles.tasksnumber}>Tarefas Criadas <span>{countTotal()}</span></div>
+          <div className={styles.tasksdone}>Concluidas <span>{taskDone? taskDone: 0} de {taskNumber? taskNumber: 0}</span></div>
         </div>
-        { tasks.map((task) => (
+        <ul className={styles.tasklist}>
+        {countTotal() > 0 ? (
+           tasks.map((task) => (
           <Task
             task={task}
             key={task.id}
             deleteTask={onDeleteTask}
             doneTask={onToggleTaskDone}
             />
-        ))}
+        )) ) : (
+          <NoTasks />
+        ) 
+      }
+      </ul>
       </main>
     </>
   )

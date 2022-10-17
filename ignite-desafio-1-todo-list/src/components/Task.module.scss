@@ -1,18 +1,45 @@
 .task {
     list-style: none;
-
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--gray-500);
+    border: 1px solid var(--gray-400);
+    border-radius: 8px;
+    margin-top: 1.5rem;
+    padding: 16px;
+    
     > img {
       cursor: pointer;
     }
 }
 
-.addbutton {
+.tasktitle {
+  max-width: 39rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.taskdone {
+  text-decoration: line-through;
+  color: var(--gray-300);
+}
+.deletebutton {
   padding: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: -1rem;
+  cursor: pointer;
+  position: relative;
+  top: 1rem;
 }
 
 .checkbox {
   padding: 0;
   background: none;
+  height: 1.5rem;
+  position: relative;
+  bottom: 0.3125rem;
+  color: var(--gray-100);
 
   &:hover {
     background: none;

@@ -1,0 +1,24 @@
+.empty {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--gray-300);
+  border-top: 1px solid var(--gray-400);
+  border-radius: 8px;
+  margin-top: 1.5rem;
+  gap: 1rem;
+
+  > img {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-top: 4rem;
+  }
+
+  > p {
+    color: var(--gray-300);
+    margin: 0;
+    padding: 0;
+  }
+}
